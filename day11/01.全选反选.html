@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 500px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 500px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #b0b0b0;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+
+</head>
+<body>
+  <div class="wrap">
+      <table>
+          <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="j_cbAll" />
+                </th>
+                <th>商品</th>
+                <th>价钱</th>
+            </tr>
+          </thead>
+          <tbody id="j_tb">
+          	
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>联想电脑</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>华为手机</td>
+                <td>4000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>小米手机</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" />
+                </td>
+                <td>诺基亚</td>
+                <td>1000</td>
+            </tr>
+
+          </tbody>
+      </table>
+      <input type="button" value="  反 选  " id="btn">
+  </div>
+  
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script>
+    $(function(){
+    	
+    	// 全部选择 全部不选按钮 
+    	var $checkedAllNode = $("#j_cbAll");
+    	
+    	var $checkedNodes = $("#j_tb input");
+    	
+    	var $reverseNode = $("#btn");
+    	
+    	
+    	/**
+    	 * 全部选择/不选
+    	 */
+    	$checkedAllNode.click(function(){
+    		// 1 获取 全选和不选的状态 
+    		var status = $(this).prop("checked");
+    		//alert(status)
+    		
+    		$checkedNodes.prop('checked',status);
+    	})
+    	
+    	$checkedNodes.click(function(){
+    		
+    		isAllChecked();
+    	})
+    	
+    	/**
+    	 * 注册反选
+    	 */
+    	$reverseNode.click(function(){
+    		// 1 获取以前选中中 
+    		var $checkedNodes = $("#j_tb input:checked");
+    		// 2获取以前灭有选中的 
+    		var $noCheckedNodes = $("#j_tb input:not(:checked)");
+    		// 3 将以前选中的变为不选中
+    		$checkedNodes.prop("checked",false);
+    		// 4 将以前没有选中的变为选中 
+    		$noCheckedNodes.prop("checked",true);
+    		isAllChecked();
+    	})
+    	
+        function isAllChecked() {
+        	// 1 获取全部选中的节点 
+        		var $checkedNodes = $("#j_tb input:checked");
+        	// 2 获取所有的节点 
+        	var $checkedNodes2 = $("#j_tb input");
+        	var flag = $checkedNodes.length === $checkedNodes2.length ? true : false;
+        	
+        	$checkedAllNode.prop('checked',flag)
+        }
+    	
+    })
+  </script>
+</body>
+</html>

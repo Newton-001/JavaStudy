@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<ul>
+		    	<li class="b">数据</li>
+		    	<li>数据</li>
+		    	<li id="a">数据</li>
+		    	<li class="b">数据</li>
+		    	<li>数据</li>
+		    	<li class="b">数据</li>
+		    	<li>数据</li>
+	        </ul>
+	        <!--	<li>数据</li>-->
+		</div>
+		
+		      <script src="js/jquery-1.8.3.min.js"></script>
+		      <script type="text/javascript">
+		      	/**
+		      	 * 
+		      	 * 1 层级选择器 
+		      	 *    找所有的孩子 
+		      	 *      children()
+		      	 *    找指定的孩子 
+		      	 *       children(选择器)
+		      	 *    找指定的子孙 
+		      	 *       find(选择器)
+		      	 *    找父亲 
+		      	 *        parent()
+		      	 *    找指定的父亲 祖父  .... 
+		      	 *         parents(选择器)
+		      	 *    找下一个兄弟 
+		      	 *         next()
+		      	 *    找后面所有的兄弟 
+		      	 *         nextAll()
+		      	 *    找后面指定的兄弟 
+		      	 *         nextAll(选择器)
+		      	 *    找上一个相兄弟 
+		      	 *         prev()
+		      	 *    找上面所有的兄弟 
+		      	 *          prevAll()
+		      	 *    找上面指定的兄弟 
+		      	 *           prevAll(选择器)
+		      	 *    找所有的兄弟 
+		      	 *        siblings()
+		      	 *    找所有指定的兄弟 
+		      	 *        siblings(选择器)
+		      	 */
+		      	
+		      	 var $ulNodes = $("ul");
+		      	 var $divNodes =  $("div");
+		      	 var $aNode = $("#a");
+		      	 //    找所有的孩子 
+		      	 $ulNodes.children().css('color','red')
+		      	 // 找指定的孩子 
+		      	 $ulNodes.children("#a").css('color','yellow')
+		      	 // 找指定的子孙 
+		      	 $divNodes.find("li").css('color','pink')
+		      	 // 找父亲
+		      	 $aNode.parent().css('background-color','red')
+		      	 // 找指定的上级 
+		      	  $aNode.parents("body").css('background-color','red')
+		      	  
+		      	  // 找下一个兄弟 
+		      	 // $aNode.next().css('color','springgreen')
+		      	  // 找之后所有的弟弟
+		      	   // $aNode.nextAll().css('color','blue')
+		      	    // 找之后指定的弟弟
+		      	   $aNode.nextAll('.b').css('color','orange')
+		      	   
+		      	   // 找上一个哥哥哥 
+		      	   $aNode.prev().css('color','green')
+		      	   
+		      	   // 找上面所有的哥哥
+		      	     $aNode.prevAll().css('color','green')
+		      	   // 找上面指定的哥哥
+		      	    $aNode.prevAll(".b").css('color','orange')
+		      	    
+		      	    // 找所有的兄弟
+		      	    $aNode.siblings().css('background-color','#000000')
+		      	    // 找指定的兄弟 
+		      	       $aNode.siblings(".b").css('background-color','#fff')
+		      </script>
+	</body>
+</html>
